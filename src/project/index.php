@@ -1,25 +1,21 @@
 <?php
 require_once './config.php';
 
-
-// Số mục trên mỗi trang
 $itemsPerPage = 10;
 
-// Trang hiện tại, mặc định là 1 nếu không được đặt
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-// Tính toán vị trí bắt đầu của mục trên trang hiện tại
 $start = ($page - 1) * $itemsPerPage;
 
-// Truy vấn để lấy danh sách mục với phân trang
+
 $sql = "SELECT * FROM items LIMIT $start, $itemsPerPage";
 
 $result = $conn->query($sql);
 
-// Truy vấn để đếm tổng số mục
+
 $totalItems = $conn->query("SELECT COUNT(*) AS total FROM items")->fetch_assoc()['total'];
 
-// Tính toán tổng số trang
+
 $totalPages = ceil($totalItems / $itemsPerPage);
 
 ?>
@@ -78,7 +74,6 @@ $totalPages = ceil($totalItems / $itemsPerPage);
             </tbody>
         </table>
         
-        <!-- Pagination Links -->
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
