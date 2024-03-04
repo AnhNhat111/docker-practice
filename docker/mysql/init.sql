@@ -1,1 +1,1 @@
-create database laravel;
+create database dev;
