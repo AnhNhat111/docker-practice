@@ -1,1 +1,3 @@
 var/mysql/data/*
+docker/nginx/conf.d/*
+docker/nginx/ssl/*

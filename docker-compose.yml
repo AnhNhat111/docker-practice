@@ -63,6 +63,19 @@ services:
     networks:
       - proxynet
 
+  vue:
+    build: 
+      context: ./docker/node
+    volumes:
+      - ./src/frontend/vuejs:/app
+    command: ["yarn", "run", "dev"]
+    depends_on:
+      - source
+    networks:
+      - proxynet
+    ports:
+      - "8989:8080"
+
 networks:
   proxynet:
     name: custom_network
