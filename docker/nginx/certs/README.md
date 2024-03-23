@@ -34,7 +34,7 @@
     openssl genrsa -out domain.key 2048
     openssl req -new -key domain.key -out domain.csr --config openssl.cnf
 
-# Content for domain.ext: -> paste code on the below
+# Content for domain.ext: - paste code on the below
     
     authorityKeyIdentifier = keyid,issuer
     basicConstraints = CA:FALSE
@@ -58,7 +58,7 @@ note:
 # Config domain on directory in directory :
     docker/nginx/conf.d/your-domain
 
-# example file domain confif:
+# example file domain config:
 
     server {
         listen 80;
