@@ -14,8 +14,6 @@ adduser -D -u ${USER_ID} -S -G nginx nginx \
 
 COPY ./snippets /etc/nginx/snippets
 COPY ./conf.d /etc/nginx/conf.d
-COPY ./ssl/server.crt /etc/ssl/certs/server.crt
-COPY ./ssl/server.key /etc/ssl/private/server.key
 
 WORKDIR /src
 

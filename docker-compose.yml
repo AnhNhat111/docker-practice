@@ -56,25 +56,27 @@ services:
     restart: always
     volumes:
       - ./src:/src
+      - ./docker/nginx/certs:/etc/nginx/certs
     ports:
       - ${EXTERNAL_WEB_PORT}:80
+      - 443:443
     env_file:
       - .env
     networks:
       - proxynet
 
-  vue:
-    build: 
-      context: ./docker/node
-    volumes:
-      - ./src/frontend/vuejs:/app
-    command: ["yarn", "run", "dev"]
-    depends_on:
-      - source
-    networks:
-      - proxynet
-    ports:
-      - "8989:8080"
+  # vue:
+  #   build: 
+  #     context: ./docker/node
+  #   volumes:
+  #     - ./src/frontend/vuejs:/app
+  #   command: ["yarn", "run", "dev"]
+  #   depends_on:
+  #     - source
+  #   networks:
+  #     - proxynet
+  #   ports:
+  #     - "8989:8080"
 
 networks:
   proxynet:
