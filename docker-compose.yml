@@ -1,6 +1,6 @@
-version: '3'
 services:
   phpmyadmin:
+    container_name: my_phpmyadmin
     image: phpmyadmin:5.1.1-apache
     restart: always
     ports:
@@ -8,11 +8,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
       PMA_HOSTS: mysql
-      PMA_USER: root
-      PMA_PASSWORD: ${DATABASE_ROOT_PASSWORD}
     networks:
       - proxynet
   mysql:
+    container_name: my_mysql
     build: 
       context: ./docker/mysql
     volumes:
@@ -32,6 +31,7 @@ services:
     networks:
       - proxynet
   source:
+    container_name: my_source
     build:
       context: ./docker/php/php8.2-apiline
       args:
@@ -49,6 +49,7 @@ services:
       - proxynet
 
   nginx:
+    container_name: my_nginx
     build:
       context: ./docker/nginx
       args:
